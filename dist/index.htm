@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<!-- Settings for Mobile Browsers / Disable Scaling Render at full size-->
+    <meta charset="UTF-8" />
+	<!--<meta name="viewport" content="height=768, width=1366, user-scalable=no, initial-scale=1, maximum-scale=1, user-scalable=0" />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />-->
+	
+	
+	
+    <link rel="stylesheet" type="text/css" href="style.css" />
+	<script src="./AudioLib.js" charset="utf-8" type="module"></script>
+    <title>Audio Manager Test Bed</title>
+    
+    <script>
+	var Controller;
+	var AudioDev;
+	var FileRoot;
+	var Clips;
+	var ClipMax = 6;
+	function Init(){
+		let Rad = window.AudioLib;
+		//-----------Preloading Resources-----------------------------------------
+		this.FileRoot = location.href.substring(0,location.href.lastIndexOf("/")+1);
+		this.AudioDev = GetAudioDevice();
+		this.Controller = new Rad.AudioController(this.ClipMax);
+		
+		this.Clips = [new Rad.RadiusAudio(this.FileRoot + "test1.mp3", 1, 100, "mp3")];
+		this.Clips.push(new Rad.RadiusAudio(this.FileRoot + "FT.mp3", 1, 100, "mp3"));
+		this.Clips.push(new Rad.RadiusAudio(this.FileRoot + "Echoes.mp3", 1, 100, "mp3"));
+		this.Controller.UpdateAudioClips = this.Clips;
+	}
+    function Play1(){
+		this.Controller.PlayAudio("file:///C:/Users/The82/Desktop/webpack-demo/dist/test1.mp3", 1);
+	}
+	 function Play2(){
+		this.Controller.PlayAudio("file:///C:/Users/The82/Desktop/webpack-demo/dist/FT.mp3", 2);
+	}
+	 function Play3(){
+		this.Controller.PlayAudio("file:///C:/Users/The82/Desktop/webpack-demo/dist/Echoes.mp3", 3);
+	}
+	function Stop1(){
+		this.Controller.Stop("file:///C:/Users/The82/Desktop/webpack-demo/dist/test1.mp3", 1);
+	}
+	function Stop2(){
+		this.Controller.Stop("file:///C:/Users/The82/Desktop/webpack-demo/dist/FT.mp3", 2);
+	}
+	function Stop3(){
+		this.Controller.Stop("file:///C:/Users/The82/Desktop/webpack-demo/dist/Echoes.mp3", 3);
+	}
+	function GetAudioDevice(){
+		var a = document.getElementById('AudioController1');
+		var b = document.getElementById('AudioController2');
+		var c = document.getElementById('AudioController3');
+		var d = document.getElementById('AudioController4');
+		var e = document.getElementById('AudioController5');
+		var f = document.getElementById('AudioController6');
+		var ABC = new Array();
+		ABC.push(a);
+		ABC.push(b);
+		ABC.push(c);
+		ABC.push(d);
+		ABC.push(e);
+		ABC.push(f);
+		return(ABC);
+	}
+    
+    </script>
+</head>
+   
+<body onload="Init()">
+	<button onclick="Play1()" class="IntBtn1">Track1 Play</button>
+	<button onclick="Play2()" class="IntBtn2">Track2 Play</button>
+	<button onclick="Play3()" class="IntBtn3">Track3 Play</button>
+	
+	<button onclick="Stop1()" class="IntBtn1">Stop1</button>
+	<button onclick="Stop2()" class="IntBtn2">Stop2</button>
+	<button onclick="Stop3()" class="IntBtn3">Stop3</button>
+	<audio id ="AudioController1" loop="loop">
+			ID1
+	</audio>
+	<audio id ="AudioController2" loop="loop">
+			ID2
+	</audio>
+    <audio id ="AudioController3" loop="loop">
+			ID3
+	</audio>
+	<audio id ="AudioController4" loop="loop">
+			ID4
+	</audio>
+	<audio id ="AudioController5" loop="loop">
+			ID5
+	</audio>
+	<audio id ="AudioController6" loop="loop">
+			ID6
+	</audio>
+</body>
+
+</html>

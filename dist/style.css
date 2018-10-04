@@ -1,0 +1,70 @@
+.IntBtn1{
+	    padding: 15px 32px;
+	color: green;
+	 border: 1px solid green;
+    text-align: center;
+    text-decoration: none;
+   display: block;
+    font-size: 16px;
+	background-color: white;
+	border-radius: 8px;
+box-shadow: 0 9px #999;
+	 cursor: pointer;
+	 margin: 4px 2px;
+	
+}
+.IntBtn1:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
+.IntBtn1:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.IntBtn2{
+	    padding: 15px 32px;
+	color: red;
+	 border: 1px solid red;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 9px #999;
+ cursor: pointer;
+	margin: 4px 2px;
+}
+.IntBtn2:hover {
+   background-color: #f44336;
+    color: white;
+}
+.IntBtn2:active {
+  background-color: #f44336;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.IntBtn3{
+	 padding: 15px 32px;
+	color: black;
+	border: 1px solid black;
+    text-align: center;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+	background-color: white;
+	border-radius: 8px;
+	box-shadow: 0 9px #999;
+ cursor: pointer;
+ margin: 4px 2px;
+}
+.IntBtn3:hover {
+     background-color: black;
+    color: white;
+}
+.IntBtn3:active {
+  background-color: black;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
