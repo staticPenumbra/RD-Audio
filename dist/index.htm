@@ -33,22 +33,22 @@
 		this.Controller.UpdateAudioClips = this.Clips;
 	}
     function Play1(){
-		this.Controller.PlayAudio("file:///C:/Users/The82/Desktop/webpack-demo/dist/test1.mp3", 1);
+		this.Controller.PlayAudio(FileRoot + "test1.mp3", 1);
 	}
 	 function Play2(){
-		this.Controller.PlayAudio("file:///C:/Users/The82/Desktop/webpack-demo/dist/FT.mp3", 2);
+		this.Controller.PlayAudio(FileRoot + "FT.mp3", 2);
 	}
 	 function Play3(){
-		this.Controller.PlayAudio("file:///C:/Users/The82/Desktop/webpack-demo/dist/Echoes.mp3", 3);
+		this.Controller.PlayAudio(FileRoot + "Echoes.mp3", 3);
 	}
 	function Stop1(){
-		this.Controller.Stop("file:///C:/Users/The82/Desktop/webpack-demo/dist/test1.mp3", 1);
+		this.Controller.Stop(FileRoot + "test1.mp3", 1);
 	}
 	function Stop2(){
-		this.Controller.Stop("file:///C:/Users/The82/Desktop/webpack-demo/dist/FT.mp3", 2);
+		this.Controller.Stop(FileRoot + "FT.mp3", 2);
 	}
 	function Stop3(){
-		this.Controller.Stop("file:///C:/Users/The82/Desktop/webpack-demo/dist/Echoes.mp3", 3);
+		this.Controller.Stop(FileRoot + "Echoes.mp3", 3);
 	}
 	function GetAudioDevice(){
 		var a = document.getElementById('AudioController1');
