@@ -68,24 +68,8 @@ export class AudioController{
 		   if(Channels){
 				this.Channels = Channels;
 				let CurrentController = this;
-				//----------BEGIN DELETE--------------------
-				//Bind channel event listeners(THIS CAN BE DELETED IF NOT USED)
-				for(let i = 0; i < Channels.length; i++){
-					//Bind channel event listeners(THIS CAN BE DELETED IF NOT USED)
-					Channels[i].onended = function Test(e){CurrentController.AudioEnded(this, e)};
-				}
-				//----------END DELETE---------------------
 		   }
 	}
-	//----------------------------------------------PLACE EVENT HANDLERS HERE(OR DELETE THIS SECTION)------------------------------------------------
-	//---------------BEGIN DELETE------------------------
-	/**
-    * AudioEnded Event Handler for the Channels(CAN BE DELETED)
-    */
-  	private AudioEnded(Ele: HTMLElement, Ev: Event){
-		//Dont do anything?
-	}
-	//--------------END DELETE-----------------------------
     //----------------------------------------------GET METHODS-------------------------------------------------
 	/**
     * Get the Array of playing audio channels
@@ -145,26 +129,6 @@ export class AudioController{
 		return(this.Matches);
 	}	
 	/**
-    * Event listener for an audio clip ending
-    * @param {AudioController} instance A pointer to the running AudioController instance
-    * @param {DOMElement[]} Channels A reference to the array of Audio channels from DOM
-    */
-    /*private AudioEnded(instance: AudioController, Channels: HTMLAudioElement[]){
-	    if(instance != null){
-		    let Audio = instance.PlayingAudio;
-		    let Free = instance.FreeChannels;
-		    for(let i of this.PlayingAudio){
-			    let item = i.GetFilePath; //Yes no parens are correct syntax
-			    if(item == Channels.getAttribute().currentTarget.currentSrc){
-				    //We've found the audio item so release the controller
-				    let controller = Audio[i].GetController();
-				    Free.push(controller);
-				    Audio.splice(i, 1);
-			    }
-		    }
-	    }
-	}*/
-	/**
 	* Stop all playing audio and reset the Audio Controller to a neutral state
 	*/
 	private Clean(){
@@ -198,13 +162,6 @@ export class AudioController{
 	* @param {RadiusAudio} Audio Audio element to add to the list of playing audio tracks
 	*/
 	private AddToPlaying(Audio: RadiusAudio){
-			//Remove the first Array Element and Stop Audio
-			/*if(this.PlayingAudio[0]){
-				this.Stop(this.PlayingAudio[0].GetFilePath.toString(), this.PlayingAudio[0].GetClipIdentifier);
-			}
-			this.PlayingAudio.splice(0, 1);*/
-
-			//Add to the end, officially making it a queue
 			this.PlayingAudio.push(Audio);
 	}
 	//--------------------PUBLIC INTERFACE FUNCTIONS-----------------
@@ -213,11 +170,6 @@ export class AudioController{
 	* @param {String} ClipName The name of the clip
 	* @param {Number} ClipIndex A unique clip index for playing the same clip simultaneously
 	*/
-	//LOGIC FLOW
-	//*Get a free channel
-	//*Assign variables to the free channel
-	//*Set the channel to play
-	//*Add Channel to the list of playing Channels
 	public PlayAudio(ClipName: String, ClipIndex: Number){
 		let exist = this.GetPlayingItems(ClipName, ClipIndex);
 		//1st thing check for a duplicate entry 
@@ -249,10 +201,6 @@ export class AudioController{
 	* @param {Number} ClipIndex A unique clip index
 	* @param {Float} Value The track starting position in seconds
 	*/
-	//LOGIC FLOW
-	//*Search the list of playing channels for the name and index
-	//*If we find it then stop the track and set the start time to Value
-	//*Set the channel to play
 	public SkipTo(ClipName: String, ClipIndex: Number, Value: number) {
 		let Playing = this.GetPlayingAudio;
 		let Matches = Array();
@@ -275,10 +223,6 @@ export class AudioController{
 	* @param {String} ClipName The name of the clip
 	* @param {Number} ClipIndex A unique clip index
 	*/
-	//LOGIC FLOW
-	//*Search the list of playing channels for the name and index
-	//*Stop the specified controller
-	//*Remove the channel from the list of playing channels
 	public Stop(ClipName: String, ClipIndex: Number) {
 		let PlayingChannels = this.UsedChannels;
 		let PlayingAudio = this.GetPlayingItems(ClipName, ClipIndex);
@@ -312,9 +256,6 @@ export class AudioController{
 	* @param {Number} ClipIndex A unique clip index
 	* @param {Boolean} RepeatFlag Boolean flag to set the clip to repeating
 	*/
-	//LOGIC FLOW
-	//*Search the list of playing channels for the name and index
-	//*If we find it then set the repeating flag
 	public SetRepeating(ClipName: String, ClipIndex: Number, Flag: boolean){
 		let Channels = this.UsedChannels;
 		let AudioOBJ = this.GetPlayingItems;
